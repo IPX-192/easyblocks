@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     a.installTranslator(&translator);*/
 
     MainWindow w(&a);
-    w.showMaximized();
+    w.showNormal();
 
     QStringList args = QCoreApplication::arguments();
     if (args.size() > 1)

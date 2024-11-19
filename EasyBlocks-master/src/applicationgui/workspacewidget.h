@@ -58,7 +58,7 @@ private:
     QHBoxLayout* _horizontalLayout;
     QVBoxLayout* _verticalLayout;
 
-    QGraphicsView* _blockCanvasView;
+    QGraphicsView* _blockCanvasView;                //工作区用QGraphicsView
     QGraphicsView* _screenCanvasView;
     BlockCanvas* _blockCanvas;
     ScreenCanvas* _screenCanvas;

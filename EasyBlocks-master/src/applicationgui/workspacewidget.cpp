@@ -21,7 +21,7 @@ void WorkspaceWidget::setBlockReprLibWidget(BlockReprLibraryWidget *widget)
     connect(_brlw, SIGNAL(selectedUserFunc(int)), this, SLOT(userFuncSelected(int)));
 }
 
-
+//整个中间区域和右边的区域
 void WorkspaceWidget::init()
 {
     _horizontalLayout = new QHBoxLayout;
@@ -49,7 +49,7 @@ void WorkspaceWidget::init()
     _screenCanvas->setSceneRect(0, 0, _model->getProject()->getScreen()->getSize().width(), _model->getProject()->getScreen()->getSize().height());
     _tabs->addTab(_screenCanvasView, tr("Screen Canvas"));
 
-    _spriteProperties = new SpritePropertiesWidget(_model);
+    _spriteProperties = new SpritePropertiesWidget(_model);        //1、蜜蜂的属性等
 
     _extraBlocks = new QTabWidget;
     _extraBlocks->setStyleSheet("QTabWidget::pane { border:none; }");
@@ -60,7 +60,7 @@ void WorkspaceWidget::init()
     _backgroundMenu->addAction(tr("Set background color..."), _screenCanvas, SLOT(setBackgroundColor()));
     _backgroundMenu->addAction(tr("Set background image..."), _screenCanvas, SLOT(setBackgroundImage()));
     _backgroundMenu->addAction(tr("Set screen size..."), this, SLOT(setScreenSize()));
-    _backgroundOptions = new QToolButton;
+    _backgroundOptions = new QToolButton;                   //2、设置画布的背景等，目前看不是很重要
     _backgroundOptions->setText(tr("Screen Options"));
     _backgroundOptions->setFixedHeight(20);
     _backgroundOptions->setMenu(_backgroundMenu);
@@ -80,18 +80,19 @@ void WorkspaceWidget::init()
     _stackedWidget->addWidget(subwidget);
 
     _verticalLayout = new QVBoxLayout;
-    _verticalLayout->addWidget(new SpritesWidget(_model, this));
+    _verticalLayout->addWidget(new SpritesWidget(_model, this));   ///右上角放小蜜蜂那个区域
     _verticalLayout->addWidget(_stackedWidget);
 
     _horizontalLayout->addWidget(_tabs);
     _horizontalLayout->addLayout(_verticalLayout);
 
-    connect(_tabs, SIGNAL(currentChanged(int)), _stackedWidget, SLOT(setCurrentIndex(int)));
+    connect(_tabs, SIGNAL(currentChanged(int)), _stackedWidget, SLOT(setCurrentIndex(int)));     //通过设置栈的下标来控制显示哪一个界面
     connect(_tabs, SIGNAL(currentChanged(int)), _window, SLOT(disableToolsBasedOnTab(int)));
 }
 
 void WorkspaceWidget::spriteSelectionChanged(int index)
 {
+    qDebug()<<"<<<<<<<<<<<<<<<<<<<< spriteSelectionChanged " << index;
     if (index < 0) {
         _blockCanvasView->setScene(NULL);
         return;

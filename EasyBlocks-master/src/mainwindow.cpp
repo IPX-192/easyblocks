@@ -49,7 +49,7 @@ void MainWindow::setupUi()
     _mainLayout->setAlignment(Qt::AlignLeft);
     ui->centralWidget->setLayout(_mainLayout);
 
-    _blockReprLibrary = new BlockReprLibraryWidget(_model);
+    _blockReprLibrary = new BlockReprLibraryWidget(_model);      ///_blockReprLibrary是最左边的区域
     _mainLayout->addWidget(_blockReprLibrary);
 
     _workspace = new WorkspaceWidget(_model, this);
@@ -350,6 +350,8 @@ void MainWindow::reload()
 
 void MainWindow::update()
 {
+
+    qDebug()<<"刷新";
     _unsaved = true;
     setTitle();
 }
