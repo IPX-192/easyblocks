@@ -52,7 +52,7 @@ private:
     void draw();
     void setActiveCategory(QString cat);
 
-    QGraphicsProxyWidget* _addBlockBtnProxy;
+    QGraphicsProxyWidget* _addBlockBtnProxy;   //将基于qwidget小部件嵌入QGraphicsScene
 };
 
 #endif // BLOCKREPRLIBRARYWIDGET_H

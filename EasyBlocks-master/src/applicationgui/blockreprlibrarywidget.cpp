@@ -1,4 +1,4 @@
-#include "blockreprlibrarywidget.h"
+﻿#include "blockreprlibrarywidget.h"
 #include "userstatementdialog.h"
 #include "../userstatementrepr.h"
 #include "../blockrepr/userstatementblockrepr.h"
@@ -44,10 +44,16 @@ void BlockReprLibraryWidget::init()
     _addBlockBtnProxy->setWidget(btn);
 }
 
+
+/*
+给左上角的按钮区域赋值
+*/
+//
 void BlockReprLibraryWidget::setupButtons()
 {
+    qDebug()<<"<<<<<<<<<<<   setupButtons";
     QStringList cats = _model->getProject()->getBlockReprLibrary()->createCategoryList();
-    _currentCat = cats.first();
+    _currentCat = cats.first();  //bool
     int i;
     for (i = 0; i < cats.size(); ++i) {
         CategoryButton* btn = new CategoryButton(cats.at(i), tr(cats.at(i).toUtf8().constData()), this);
@@ -68,6 +74,7 @@ void BlockReprLibraryWidget::setupButtons()
     _buttons.first()->setChecked(true);
 }
 
+//
 void BlockReprLibraryWidget::setupView()
 {
     _view = new QGraphicsView(this);
@@ -77,8 +84,10 @@ void BlockReprLibraryWidget::setupView()
     _verticalLayout->addWidget(_view);
 }
 
+//根据选中的类别,加载不同的块，并渲染在QGraphicsScene
 void BlockReprLibraryWidget::draw()
 {
+    qDebug()<<"<<<<<<<<<<<<<<<<<< draw";
     QList<BlockRepr*> blocks;
     if (_currentCat != "User Functions")
         blocks.append(_model->getProject()->getBlockReprLibrary()->getBlocksOfCategory(_currentCat));
@@ -108,6 +117,8 @@ void BlockReprLibraryWidget::draw()
             proxy->setPos(pos + QPoint(br->getTotalSize().width() + 20, 0));
         }
 
+        //使用QGraphicsProxyWidget 嵌入控件,目的是让普通的控件可以拖动
+
         pos += QPoint(0, br->getTotalSize().height() + 15);
         i++;
     }
@@ -130,6 +141,7 @@ void BlockReprLibraryWidget::buttonClicked(QString cat)
 
 void BlockReprLibraryWidget::addBlock()
 {
+    qDebug()<<u8"点击加号";
     UserStatementDialog dialog;
     if (dialog.exec())
     {

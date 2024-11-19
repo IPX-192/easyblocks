@@ -1,4 +1,4 @@
-#ifndef BLOCKREPR_H
+﻿#ifndef BLOCKREPR_H
 #define BLOCKREPR_H
 
 #include "block.h"
@@ -19,6 +19,7 @@ class Project;
  * @brief The BlockRepr class
  *
  * @author Brent Chesny
+ * 这个应该是块的一些具体属性，比如标签和尺寸
  */
 class BlockRepr : public QObject
 {

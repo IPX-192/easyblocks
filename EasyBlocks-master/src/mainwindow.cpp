@@ -54,7 +54,7 @@ void MainWindow::setupUi()
 
     _workspace = new WorkspaceWidget(_model, this);
     _workspace->setBlockReprLibWidget(_blockReprLibrary);
-    _mainLayout->addWidget(_workspace);
+    _mainLayout->addWidget(_workspace);  //中间和右边的区域
 }
 
 void MainWindow::createToolbar()
@@ -114,6 +114,7 @@ void MainWindow::disableToolsBasedOnTab(int index)
 
 void MainWindow::renewBlockLibraryWidget()
 {
+    //应该是中间的画布
     BlockReprLibraryWidget* newlib = new BlockReprLibraryWidget(_model);
     _mainLayout->removeWidget(_blockReprLibrary);
     _mainLayout->insertWidget(0, newlib);
