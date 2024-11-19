@@ -1,3 +1,6 @@
 /EasyBlocks-master/*doc*/
 /EasyBlocks-master/src/*.qtc_clangd*/
 /EasyBlocks-master/src/*debug*/
+*.Release
+*.Debug
+EasyBlocks-master/src/Makefile
