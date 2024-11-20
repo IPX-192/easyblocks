@@ -39,11 +39,13 @@ ProgramWindow::~ProgramWindow()
 
 void ProgramWindow::update()
 {
+    //qDebug()<<u8"刷新对象";
     ui->screenView->update();
 }
 
 void ProgramWindow::outputReceived(const QString &output)
 {
+     qDebug()<<u8"outputReceived";
     ui->console->setHtml(ui->console->toHtml().append(output));
     QTextCursor c =  ui->console->textCursor();
     c.movePosition(QTextCursor::End);
@@ -52,6 +54,7 @@ void ProgramWindow::outputReceived(const QString &output)
 
 void ProgramWindow::inputRequestReceived()
 {
+     qDebug()<<u8"inputRequestReceived";
     if (_askingInput)
         return;
 

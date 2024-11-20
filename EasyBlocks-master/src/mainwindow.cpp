@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
 
 #include "fileio/projectxmlwriter.h"
@@ -275,8 +275,9 @@ void MainWindow::pauseAction()
 
 void MainWindow::programStopped()
 {
-    delete _program;
-    _program = NULL;
+    //   暂时屏蔽，会崩
+    //    delete _program;
+    //    _program = NULL;
 
     _stopAction->setEnabled(false);
     _pauseAction->setEnabled(false);
@@ -351,7 +352,7 @@ void MainWindow::reload()
 void MainWindow::update()
 {
 
-    qDebug()<<"刷新";
+    //qDebug()<<"刷新";
     _unsaved = true;
     setTitle();
 }

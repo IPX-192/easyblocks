@@ -1,4 +1,4 @@
-#ifndef PROGRAMMODEL_H
+﻿#ifndef PROGRAMMODEL_H
 #define PROGRAMMODEL_H
 
 #include "executionhandler.h"
@@ -82,7 +82,7 @@ private slots:
 
 private:
 
-    ExecutionHandler* _executionHandler;
+    ExecutionHandler* _executionHandler;     //这个控制界面不断刷新
 
     IOHandler* _ioHandler;
 
@@ -90,7 +90,7 @@ private:
 
     Screen* _screen;
 
-    QList<Sprite*> _sprites;
+    QList<Sprite*> _sprites;     //这个是控制的那个对象，就是小蜜蜂
 
     QList<UserStatement*> _userStatements;
 

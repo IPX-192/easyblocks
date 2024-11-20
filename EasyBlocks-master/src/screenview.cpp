@@ -1,4 +1,4 @@
-#include "screenview.h"
+﻿#include "screenview.h"
 
 #include <QBrush>
 #include <QGraphicsPixmapItem>
@@ -47,6 +47,8 @@ void ScreenView::drawSprite(Sprite* sprite)
     QPixmap pixmap(*(sprite->getCurrentImage()));
     pixmap = pixmap.scaled(sprite->getSize());
     spriteView->setPixmap(pixmap);
+
+    qDebug()<<"vvvvvvvvvvvvv  "<<sprite->getPosition().x() - sprite->getSize().width()/2, sprite->getPosition().y() - sprite->getSize().height()/2;
     spriteView->setPos(sprite->getPosition().x() - sprite->getSize().width()/2, sprite->getPosition().y() - sprite->getSize().height()/2);
     spriteView->setTransformOriginPoint(sprite->getSize().width()/2, sprite->getSize().height()/2);
     spriteView->setRotation(sprite->getRotation());
