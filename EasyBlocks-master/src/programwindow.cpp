@@ -1,4 +1,4 @@
-#include "programwindow.h"
+﻿#include "programwindow.h"
 #include "ui_programwindow.h"
 
 #include <QDebug>
@@ -80,6 +80,7 @@ void ProgramWindow::sendAnswer()
 
 void ProgramWindow::closeEvent(QCloseEvent *event)
 {
+    qDebug()<<u8"关闭运行窗口";
     emit closed();
 }
 

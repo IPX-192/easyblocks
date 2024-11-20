@@ -1,4 +1,4 @@
-#include "projectxmlreader.h"
+﻿#include "projectxmlreader.h"
 
 #include <QDebug>
 
@@ -38,6 +38,7 @@ bool ProjectXMLReader::readFromFile(QString path)
 
 void ProjectXMLReader::projectFromXML(QDomElement project)
 {
+    qDebug()<<u8"读取xml中的文件";
     //check if containing the required elements
     if(project.isNull() || project.elementsByTagName("Screen").size() == 0) {
         setLoadingFailed(QObject::tr("File is corrupted"));

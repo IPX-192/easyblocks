@@ -1,4 +1,4 @@
-#include "spritegraphicsitem.h"
+﻿#include "spritegraphicsitem.h"
 #include "../easyblocksmodel.h"
 #include <QDebug>
 #include <QGraphicsSceneMouseEvent>
@@ -79,6 +79,7 @@ void SpriteGraphicsItem::mousePressEvent(QGraphicsSceneMouseEvent* event)
 
 void SpriteGraphicsItem::mouseMoveEvent(QGraphicsSceneMouseEvent* event)
 {
+    qDebug()<<u8"鼠标按下变量";
     QGraphicsItem::mouseMoveEvent(event);
 
     //set new position
@@ -89,6 +90,7 @@ void SpriteGraphicsItem::mouseMoveEvent(QGraphicsSceneMouseEvent* event)
 
 void SpriteGraphicsItem::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
 {
+     qDebug()<<u8"鼠标移动变量";
     _sprite->setPosition(event->scenePos().toPoint() - _clickedPoint);
     _model->getProject()->setCurrentSprite(_sprite);
     _ignoreUpdates = false;

@@ -1,7 +1,8 @@
-#include "levelxmlreader.h"
+﻿#include "levelxmlreader.h"
 
 #include <QFile>
 #include <QDomDocument>
+#include <QDebug>
 
 LevelXMLReader::LevelXMLReader() : _levelHandler(NULL)
 {
@@ -9,6 +10,7 @@ LevelXMLReader::LevelXMLReader() : _levelHandler(NULL)
 
 bool LevelXMLReader::readFromFile(const QString &path)
 {
+    qDebug()<<"vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvsss";
     if(_levelHandler != NULL) {
         delete _levelHandler;
         _levelHandler = NULL;

@@ -1,4 +1,4 @@
-#include "blockreprview.h"
+﻿#include "blockreprview.h"
 
 #include <QCursor>
 #include <QPainter>
@@ -99,6 +99,8 @@ void BlockReprView::updateBlock()
 
 void BlockReprView::mousePressEvent(QGraphicsSceneMouseEvent* event)
 {
+
+    qDebug()<<u8"鼠标按下物块";
     if (event->button() != Qt::LeftButton) {
         event->ignore();
         return;
@@ -106,8 +108,13 @@ void BlockReprView::mousePressEvent(QGraphicsSceneMouseEvent* event)
     setCursor(QCursor(Qt::ClosedHandCursor));
 }
 
+//决定左边的控件是否能够拖动
 void BlockReprView::mouseMoveEvent(QGraphicsSceneMouseEvent* event)
 {
+    qDebug()<<u8"鼠标移动物块";
+
+    //return;
+
     bool isLocked = _blockRepr->isLocked();
 
     // Create a drag object with mimetype data.
@@ -153,16 +160,19 @@ void BlockReprView::mouseReleaseEvent(QGraphicsSceneMouseEvent* event)
 
 void BlockReprView::dragEnterEvent(QGraphicsSceneDragDropEvent* event)
 {
+     qDebug()<<u8"拖动进入";
     QGraphicsItem::dragEnterEvent(event);
 }
 
 void BlockReprView::dropEvent(QGraphicsSceneDragDropEvent* event)
 {
+     qDebug()<<u8"拖动";
     QGraphicsItem::dropEvent(event);
 }
 
 void BlockReprView::dragLeaveEvent(QGraphicsSceneDragDropEvent* event)
 {
+    qDebug()<<u8"拖动离开";
     QGraphicsItem::dragLeaveEvent(event);
 }
 

@@ -1,4 +1,4 @@
-#ifndef PROJECTCOMPILER_H
+﻿#ifndef PROJECTCOMPILER_H
 #define PROJECTCOMPILER_H
 
 #include "../project.h"
@@ -26,6 +26,11 @@
  * @brief The ProjectCompiler class
  *
  * @author Brecht Vandevoort
+ *
+ *
+ *
+ * 说明：ProjectCompiler类主要负责将一个项目（Project）编译成可执行的程序（Program），并提供了一系列方法来处理编译过程中的各个环节，
+ * 包括对项目中的屏幕、精灵（Sprite）、用户自定义语句（UserStatement）等各种元素的编译操作，同时还能获取编译是否失败的状态以及相关的编译消息
  */
 class ProjectCompiler
 {
@@ -62,12 +67,17 @@ private:
     /**
      * @brief Compiles and returns the model of the project
      * @return The ProgramModel compiled from the project
+     *
+     * 说明：编译并返回项目的模型，对项目中的各种元素进行处理和转换
+     *
      */
     ProgramModel* compileModel();
 
     /**
      * @brief Compiles the screen
      * @param screen The screen to put the information in.
+     *
+     * 说明：编译屏幕
      */
     void compileScreen(Screen* screen);
 
@@ -76,6 +86,10 @@ private:
      * @param spriteRepr The SpriteRepr to convert
      * @param model Pointer to the ProgramModel
      * @return The newly created Sprite
+     *
+     *
+     * 说明：传入的精灵（对象）和programModel创建一个新的sprite对象
+     *
      */
     Sprite* createSprite(SpriteRepr* spriteRepr, ProgramModel* model);
 
@@ -177,6 +191,7 @@ private:
      * @param blockRepr The SpriteBlockRepr as a BlockRepr
      * @param sprites A QMap to connect SpriteReprs and Sprites
      * @return The compiled SpriteBlock
+     * 说明：通过映射转换对象
      */
     SpriteBlock* compileSpriteBlock(BlockRepr* blockRepr, QMap<SpriteRepr*, Sprite*> sprites);
 
@@ -185,6 +200,7 @@ private:
      * @param blockRepr The UserStatementBlockRepr as a BlockRepr
      * @param userStatements A QMap to connect UserStatementReprs and UserStatements
      * @return The compiled UserStatementBlock
+     * 说明：通过映射转换对象
      */
     UserStatementBlock* compileUserStatementBlock(BlockRepr* blockRepr, QMap<UserStatementRepr*, UserStatement*> userStatements);
 
@@ -199,6 +215,8 @@ private:
      * @brief Returns the datatype of a given BlockRepr
      * @param blockRepr The BlockRepr to get the dataType from
      * @return The DataType of the BlockRepr
+     *
+     * 说明：编译过程中确定数据的处理方式
      */
     Value::DataType getDataType(BlockRepr* blockRepr);
 

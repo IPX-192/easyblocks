@@ -1,4 +1,4 @@
-#include "projectxmlwriter.h"
+﻿#include "projectxmlwriter.h"
 #include "../blockrepr/constantblockrepr.h"
 #include "../blockrepr/spriteblockrepr.h"
 
@@ -35,6 +35,7 @@ bool ProjectXMLWriter::writeToFile(QString path)
 
 QDomElement ProjectXMLWriter::projectToXML(Project *project)
 {
+    qDebug()<<u8"存储项目到文件中";
     QDomDocument doc;
     QDomElement projectElement = doc.createElement("Project");
 
@@ -90,6 +91,7 @@ QDomElement ProjectXMLWriter::screenToXML(ScreenRepr *screen)
 
 QDomElement ProjectXMLWriter::spriteToXML(SpriteRepr *sprite)
 {
+    qDebug()<<"<<<<<<<<<<<<<<<<<<  spriteToXML ";
     QDomDocument doc;
 
     QDomElement spriteElement = doc.createElement("Sprite");
