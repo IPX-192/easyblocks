@@ -1,4 +1,4 @@
-#include "projectcompiler.h"
+﻿#include "projectcompiler.h"
 
 #include <QMap>
 #include <QDebug>
@@ -162,15 +162,17 @@ void ProjectCompiler::compileUserStatement(UserStatementRepr *userStatementRepr,
     }
 }
 
+//要有可以触发的事件物块作为启动条件才会走这里,是什么物块就实例化成什么物块
+
 EventBlock *ProjectCompiler::compileEventBlock(BlockRepr* blockRepr, QMap<SpriteRepr *, Sprite *> sprites, QMap<UserStatementRepr *, UserStatement *> userStatements)
 {
-    EventBlock* block = (EventBlock*)_project->getBlockLibrary()->getBlockInstance(blockRepr->getId());
-
+    EventBlock* block = (EventBlock*)_project->getBlockLibrary()->getBlockInstance(blockRepr->getId());   //这个id是指这个物块的名字，比如空格还是回车之类的
     if(block == NULL) {
         setFailed(QObject::tr("The following block was not found: ") + blockRepr->getId());
         return NULL;
     }
 
+    //增加参数，好像没用的样子？
     for(int i = 0; i < blockRepr->getNumParams(); i++) {
         block->addParameter(compileParam(blockRepr->getParam(i), sprites, userStatements), i);
     }

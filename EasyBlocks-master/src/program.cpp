@@ -1,4 +1,4 @@
-#include "program.h"
+﻿#include "program.h"
 
 Program::Program(ProgramModel* model) : _model(model)
 {
@@ -20,7 +20,7 @@ void Program::start()
     _window->show();
     _window->update();
     _model->startExecution();
-    _model->sendSignal(Signal(Signal::START));
+    _model->sendSignal(Signal(Signal::START));                   //注意：这几种信号作为触发条件，属于event模块中，然后不断的监听鼠标或者键盘事件
 }
 
 
