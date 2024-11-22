@@ -1,4 +1,4 @@
-#include "executionthread.h"
+﻿#include "executionthread.h"
 
 ExecutionThread::ExecutionThread()
     : _returnValue(NULL), _keepTopBlock(true), _ioHandler(NULL)
@@ -42,7 +42,7 @@ void ExecutionThread::executeNext()
     _keepTopBlock = true;
     _nextBlock = NULL;
 
-    _executionStack.top()->getBlock()->executeNextStep(*this);
+    _executionStack.top()->getBlock()->executeNextStep(*this);  //重要：执行物块代码的是这里，最顶部的物块这里是实例化的x和y。
 
     //if top block ended execution -> pop block
     if(!_keepTopBlock)
@@ -56,7 +56,7 @@ void ExecutionThread::executeNext()
             _returnValue = NULL;
         }
 
-        changeTopBlock();
+        changeTopBlock();     //重要：不改变最上面执行的物块也不会一直执行
     }
 }
 
@@ -125,6 +125,7 @@ void ExecutionThread::endExecution(Value* returnValue)
     _keepTopBlock = false;
 }
 
+//断点调试的时候看到一个_vfptr是一个虚函数指针，
 Value* ExecutionThread::getReturnValue() const
 {
     return _returnValue;

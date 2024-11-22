@@ -1,4 +1,4 @@
-#ifndef GOTOPOSITIONBLOCK_H
+﻿#ifndef GOTOPOSITIONBLOCK_H
 #define GOTOPOSITIONBLOCK_H
 
 #include "../../statementblock.h"
@@ -81,7 +81,7 @@ public:
     virtual Block* newInstance() const {return new GoToPositionBlock();}
 
 private:
-    ExpressionBlock* _xPos;
+    ExpressionBlock* _xPos;      //这两个物块实例化是varblock
     ExpressionBlock* _yPos;
 };
 

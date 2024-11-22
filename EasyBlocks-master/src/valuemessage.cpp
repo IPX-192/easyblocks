@@ -1,4 +1,4 @@
-#include "valuemessage.h"
+﻿#include "valuemessage.h"
 
 #include <QDebug>
 
@@ -8,6 +8,7 @@ ValueMessage::~ValueMessage()
         delete _value;
 }
 
+//说明
 void ValueMessage::setValue(Value* value)
 {
     if(_value != NULL)

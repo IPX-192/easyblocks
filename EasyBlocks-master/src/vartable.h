@@ -1,4 +1,4 @@
-#ifndef VARTABLE_H
+﻿#ifndef VARTABLE_H
 #define VARTABLE_H
 
 #include "variable.h"
@@ -8,6 +8,7 @@
  * @brief The VarTable class
  *
  * @author Brent Chesny
+ * 说明：管理变量表相关的类
  */
 class VarTable
 {
