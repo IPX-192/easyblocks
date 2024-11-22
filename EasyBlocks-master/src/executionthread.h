@@ -1,4 +1,4 @@
-#ifndef EXECUTIONTHREAD_H
+﻿#ifndef EXECUTIONTHREAD_H
 #define EXECUTIONTHREAD_H
 
 #include <QStack>
@@ -16,6 +16,9 @@
  * @brief The ExecutionThread class
  *
  * @author Brecht Vandevoort
+ *
+ *
+ * 说明：这个线程处理代码块，管理变量类、代码块、精灵对象、消息传递以及输入输出等
  */
 class ExecutionThread
 {
@@ -30,6 +33,8 @@ public:
      * @param block The first block to execute
      * @param varTable The vartable to use when executing the block
      * @param sprite The sprite to use when executing the block
+     *
+     * 说明：ioHandler是输入输出的处理程序
      */
     ExecutionThread(Block* block, VarTable* varTable, Sprite* sprite, IOHandler* ioHandler);
 
@@ -76,6 +81,8 @@ public:
     /**
      * @brief Returns the vartable for the current block
      * @return Vartable for the current block
+     *
+     * 说明:获取当前正在执行代码的变量表
      */
     VarTable* getVarTable() const;
 
@@ -110,11 +117,11 @@ public:
     IOHandler* getIOHandler() const {return _ioHandler;}
 
 private:
-    QStack<ExecutionStackElement*> _executionStack;
-    Value* _returnValue;
+    QStack<ExecutionStackElement*> _executionStack;     //模拟程序执行栈
+    Value* _returnValue;                                //存储最后执行的代码块的返回值
     Block* _nextBlock;
-    bool _keepTopBlock;
-    IOHandler* _ioHandler;
+    bool _keepTopBlock;                                 //在类的实现中控制是否保留执行栈的顶部代码块
+    IOHandler* _ioHandler;                              //用于处理执行线程中的输入输出操作，通过getIOHandler函数可以获取该指针。
 
     /**
      * @brief Changes the next block to be executed on the executionstack

@@ -1,4 +1,4 @@
-#include "movestepsblock.h"
+﻿#include "movestepsblock.h"
 
 #include <qmath.h>
 #include <QDebug>
@@ -61,6 +61,8 @@ void MoveStepsBlock::executeNextStep(ExecutionThread& executionThread) const
             QPoint movement = QPoint(steps * qCos(radians), steps * qSin(radians));
             QPoint current = sprite->getPosition();
             sprite->setPosition(current + movement);
+
+            qDebug()<<u8"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<设置位置";
         }
         executionThread.endExecution(NULL);
         return;

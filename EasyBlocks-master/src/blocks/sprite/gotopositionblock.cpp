@@ -1,4 +1,4 @@
-#include "gotopositionblock.h"
+﻿#include "gotopositionblock.h"
 
 #include <QDebug>
 
@@ -77,6 +77,8 @@ void GoToPositionBlock::executeNextStep(ExecutionThread& executionThread) const
             int x = (int) m->getValue()->toDouble();
             int y = (int) v->toDouble();
             sprite->setPosition(QPoint(x, y));
+
+             qDebug()<<u8"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<设置位置2";
         }
         executionThread.endExecution(NULL);
         return;

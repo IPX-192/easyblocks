@@ -1,4 +1,4 @@
-#ifndef EXECUTIONHANDLER_H
+﻿#ifndef EXECUTIONHANDLER_H
 #define EXECUTIONHANDLER_H
 
 #include "executionthread.h"
@@ -14,6 +14,9 @@
  * @brief The ExecutionHandler class
  *
  * @author Brecht Vandevoort
+ *
+ * 说明：控制线程的操作类但是好像并没有真的使用到线程而是定时器
+ *
  */
 class ExecutionHandler : public QObject
 {
@@ -61,6 +64,8 @@ public:
      * @param block The block to execute in the new ExecutionThread
      * @param varTable The varTable to use
      * @param sprite The sprite to use
+     *
+     * 说明：接受一个block类型的代码块,一个VarTable变量,一个精灵对象
      */
     void addExecutionThread(Block* block, VarTable* varTable, Sprite* sprite);
 

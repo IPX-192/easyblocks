@@ -1,4 +1,4 @@
-#include "executionhandler.h"
+﻿#include "executionhandler.h"
 #include <QDebug>
 
 ExecutionHandler::ExecutionHandler(IOHandler *ioHandler) : _ioHandler(ioHandler)
@@ -68,14 +68,14 @@ void ExecutionHandler::executionTick()
 
     if(EXECUTION_TICK_INTERVAL <= _prevExecutionTime.msecsTo(QDateTime::currentDateTime()))
     {
-        executeThreads();
+        executeThreads();          //控制事件的信号,所有对物块的操作都在这里面
         emit executionTicked();
         _prevExecutionTime = _prevExecutionTime.addMSecs(EXECUTION_TICK_INTERVAL);
     }
 
     if(DRAW_TICK_INTERVAL <= _prevDrawTime.msecsTo(QDateTime::currentDateTime()))
     {
-        emit drawingTicked();
+        emit drawingTicked();      //控制绘画的信号
         _prevDrawTime = _prevDrawTime.addMSecs(DRAW_TICK_INTERVAL);
     }
 
@@ -84,9 +84,12 @@ void ExecutionHandler::executionTick()
 
 void ExecutionHandler::executeThreads()
 {
+    //放了物块这里就是赋值,执行了事件之后会删除
     if(_threads.size() == 0)
+    {
+        //qDebug()<<u8"没得物块";
         return;
-
+    }
     for(int i = _threads.size()-1; i >= 0; i--) {
         ExecutionThread* et = _threads.at(i);
         et->executeNext();

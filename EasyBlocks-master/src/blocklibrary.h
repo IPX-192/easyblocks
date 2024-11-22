@@ -1,4 +1,4 @@
-#ifndef BLOCKLIBRARY_H
+﻿#ifndef BLOCKLIBRARY_H
 #define BLOCKLIBRARY_H
 
 #include <QList>
@@ -12,6 +12,10 @@ class BlockReprLibrary;
  * @brief The BlockLibrary class
  *
  * @author Brecht Vandevoort
+ *
+ *
+ * 类说明：管理一系列block对象，定义了一个名为BlockLibrary的类，它主要用于管理一系列的Block对象。
+ * 该类提供了诸如注册新Block、获取特定ID的Block实例、创建基于库中Block的BlockReprLibrary、检查库中是否存在特定ID的Block等功能
  */
 class BlockLibrary
 {
@@ -62,7 +66,7 @@ public:
     Block* get(QString id) const;
 
 private:
-    QList<Block*> _blocks;
+    QList<Block*> _blocks;     //存储指向block对象指针的列表
 };
 
 #endif // BLOCKLIBRARY_H

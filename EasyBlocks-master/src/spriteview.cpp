@@ -1,4 +1,4 @@
-#include "spriteview.h"
+﻿#include "spriteview.h"
 
 #include <QDebug>
 #include <QGraphicsView>
@@ -6,6 +6,7 @@
 
 SpriteView::SpriteView(Sprite *sprite) : _sprite(sprite)
 {
+    //是否图片只有缩放，位置，旋转角度几个属性可以改变
     QPixmap pixmap(*(_sprite->getCurrentImage()));
     pixmap = pixmap.scaled(_sprite->getSize());
     setPixmap(pixmap);
@@ -16,6 +17,8 @@ SpriteView::SpriteView(Sprite *sprite) : _sprite(sprite)
 
 void SpriteView::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
+
+    qDebug()<<u8"按下图片";
     QGraphicsPixmapItem::mousePressEvent(event);
 
     if (event->isAccepted())

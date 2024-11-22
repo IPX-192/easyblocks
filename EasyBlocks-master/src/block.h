@@ -1,4 +1,4 @@
-#ifndef BLOCK_H
+﻿#ifndef BLOCK_H
 #define BLOCK_H
 
 #include <QString>
@@ -16,6 +16,8 @@ class StatementBlock;
  * @brief The Block class
  *
  * @author Brecht Vandevoort
+ *
+ * 说明：一个模块的抽象基类，定义了一系列模块应具备的基本属性和操作
  */
 class Block
 {
@@ -77,6 +79,8 @@ public:
     /**
      * @brief Executes the next step of the block. This function is assumed to do an atomic step in execution, and may not execute infinitely
      * @param executionThread The ExecutionThread this block is running on
+     *
+     * 说明:执行模块的下一步操作，被设定成原子操作且不能无限执行，必须继承实现新的操作
      */
     virtual void executeNextStep(ExecutionThread& executionThread) const = 0;
 
@@ -85,6 +89,7 @@ public:
      * @param parameter The block to add
      * @param index The index of the parameter
      * @return True if adding succeeded , false if not
+     * 说明：向本模块增加一个参数模块
      */
     virtual bool addParameter(Block* parameter, int index) = 0;
 
