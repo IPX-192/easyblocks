@@ -1,4 +1,4 @@
-#ifndef SPRITEVARTABLE_H
+﻿#ifndef SPRITEVARTABLE_H
 #define SPRITEVARTABLE_H
 
 #include "simplevartable.h"
@@ -7,6 +7,8 @@
  * @brief The SpriteVarTable class
  *
  * @author Brent Chesny
+ *
+ * 管理精灵的变量表？感觉应该是右下角那个变量表
  */
 class SpriteVarTable : public VarTable
 {

@@ -92,7 +92,7 @@ void ExecutionHandler::executeThreads()
     }
     for(int i = _threads.size()-1; i >= 0; i--) {
         ExecutionThread* et = _threads.at(i);
-        et->executeNext();
+        et->executeNext();                  //重要：物块的关键应该是在这里执行的
 
         if(et->isEmpty()) {
             delete et;

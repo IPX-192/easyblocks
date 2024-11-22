@@ -1,4 +1,4 @@
-#ifndef SPRITE_H
+﻿#ifndef SPRITE_H
 #define SPRITE_H
 
 #include <QPixmap>
@@ -128,7 +128,7 @@ private:
 
     ProgramModel* _programModel;
 
-    QList<EventBlock*> _blocks;
+    QList<EventBlock*> _blocks;           //这个精灵有几个事件物块
 
     QList<QPixmap*> _images;
 
