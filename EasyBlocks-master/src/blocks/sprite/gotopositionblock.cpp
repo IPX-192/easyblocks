@@ -40,7 +40,7 @@ void GoToPositionBlock::executeNextStep(ExecutionThread& executionThread) const
     }
 
     //evaluate left
-    //说明：启动之后精灵会移动到左上角
+
     if(m->getNumber() == 0)
     {
         executionThread.setNextBlock(_xPos);

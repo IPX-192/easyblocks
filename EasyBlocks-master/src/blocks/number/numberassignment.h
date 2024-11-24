@@ -1,4 +1,4 @@
-#ifndef NUMBERASSIGNMENT_H
+﻿#ifndef NUMBERASSIGNMENT_H
 #define NUMBERASSIGNMENT_H
 
 #include "../../statementblock.h"
@@ -9,6 +9,8 @@
  * @brief The NumberAssignment class
  *
  * @author Brecht Vandevoort
+ *
+ * 说明：这个类是number中设定数据运算的
  */
 class NumberAssignment : public StatementBlock
 {

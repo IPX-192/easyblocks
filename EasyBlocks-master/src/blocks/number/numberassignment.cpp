@@ -1,5 +1,5 @@
-#include "numberassignment.h"
-
+﻿#include "numberassignment.h"
+#include <QDebug>
 #include "../../executionthread.h"
 #include "../../intmessage.h"
 
@@ -44,8 +44,11 @@ void NumberAssignment::executeNextStep(ExecutionThread& executionThread) const
     if(m->getValue() == 1)
     {
         Value* rv = executionThread.getReturnValue();
+        //这个是精灵的属性赋值的
         if(rv != NULL && executionThread.getVarTable() != NULL)
             _variable->setValue(rv->copy(), *executionThread.getVarTable());
+
+        qDebug()<<u8"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<设置数字累加";
 
         executionThread.endExecution(NULL);
         return;
