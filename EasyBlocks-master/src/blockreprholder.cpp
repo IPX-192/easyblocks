@@ -1,4 +1,4 @@
-#include "blockreprholder.h"
+﻿#include "blockreprholder.h"
 
 #include "blockrepr.h"
 #include "project.h"
@@ -21,6 +21,7 @@ BlockReprHolder::~BlockReprHolder()
     qDeleteAll(_blocks);
 }
 
+//重要：这里是放物块的第一步，后面根据放进去的物块的id分别实例化
 void BlockReprHolder::addBlock(BlockRepr *block)
 {
     if(block != NULL) {

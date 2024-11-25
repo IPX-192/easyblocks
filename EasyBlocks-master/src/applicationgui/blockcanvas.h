@@ -1,4 +1,4 @@
-#ifndef BLOCKCANVAS_H
+﻿#ifndef BLOCKCANVAS_H
 #define BLOCKCANVAS_H
 
 #include <QGraphicsScene>
@@ -20,6 +20,8 @@ public:
      * @brief Constructor
      * @param sprite The SpriteRepr this canvas represents
      * @param parent parent QObject
+     *
+     * 说明：用于管理和处理与块表示相关的图形场景操作的类
      */
     explicit BlockCanvas(BlockReprHolder* holder, QObject *parent = 0);
 

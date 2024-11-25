@@ -58,6 +58,7 @@ void NumberAssignment::executeNextStep(ExecutionThread& executionThread) const
     return;
 }
 
+//看这个
 bool NumberAssignment::addParameter(Block* parameter, int index)
 {
     if(parameter == NULL)

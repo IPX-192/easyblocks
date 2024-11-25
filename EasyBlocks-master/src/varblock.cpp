@@ -1,4 +1,4 @@
-#include "varblock.h"
+﻿#include "varblock.h"
 #include "executionthread.h"
 
 #include <QDebug>
@@ -35,5 +35,6 @@ void VarBlock::setValue(Value* value, VarTable& varTable) const
     if(value == NULL || value->getDataType() != _dataType)
         return;
 
+    //给变量设值
     varTable.setValue(_varName, value);
 }

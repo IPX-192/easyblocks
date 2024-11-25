@@ -1,4 +1,4 @@
-#include "blocklibrary.h"
+﻿#include "blocklibrary.h"
 
 #include "blockreprlibrary.h"
 #include "blocks/blocks.h"
@@ -89,6 +89,8 @@ bool BlockLibrary::registerBlock(Block* block)
 
     //add block
     _blocks.append(block);
+
+    qDebug()<<u8"添加了多少个 "<<_blocks.size();
     return true;
 }
 

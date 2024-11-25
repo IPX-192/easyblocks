@@ -19,6 +19,7 @@ BlockCanvas::~BlockCanvas()
     resetList();
 }
 
+//重要:在增加减少物块，以为增加减少变量的时候都会更新这个物块列表
 void BlockCanvas::spriteUpdated()
 {
     buildList();

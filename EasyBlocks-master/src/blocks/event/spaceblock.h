@@ -1,4 +1,4 @@
-#ifndef SPACEBLOCK_H
+﻿#ifndef SPACEBLOCK_H
 #define SPACEBLOCK_H
 
 #include "../../eventblock.h"
@@ -7,6 +7,8 @@
  * @brief The SpaceBlock class
  *
  * @author Brent Chesny
+ *
+ * 说明：具体的事件类，id是在这里面获取的
  */
 class SpaceBlock : public EventBlock
 {
