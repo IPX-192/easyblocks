@@ -1,4 +1,4 @@
-#ifndef PLUSBLOCK_H
+﻿#ifndef PLUSBLOCK_H
 #define PLUSBLOCK_H
 
 #include "../../expressionblock.h"
@@ -7,6 +7,8 @@
  * @brief The PlusBlock class
  *
  * @author Brecht Vandevoort
+ *
+ * 说明：加法运算物块
  */
 class PlusBlock : public ExpressionBlock
 {

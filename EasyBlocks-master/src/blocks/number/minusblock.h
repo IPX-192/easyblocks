@@ -1,4 +1,4 @@
-#ifndef MINUSBLOCK_H
+﻿#ifndef MINUSBLOCK_H
 #define MINUSBLOCK_H
 
 #include "../../expressionblock.h"
@@ -7,6 +7,7 @@
  * @brief The MinusBlock class
  *
  * @author Brent Chesny
+ * 说明：减法运算物块
  */
 class MinusBlock : public ExpressionBlock
 {

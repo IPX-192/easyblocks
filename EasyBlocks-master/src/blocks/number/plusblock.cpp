@@ -1,4 +1,4 @@
-#include "plusblock.h"
+﻿#include "plusblock.h"
 
 #include <QDebug>
 
@@ -75,6 +75,7 @@ void PlusBlock::executeNextStep(ExecutionThread& executionThread) const
 
         //create return value
         Value* s = new NumberValue(m->getValue()->toDouble() + v->toDouble());
+        qDebug()<<u8"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<加法运算";
         executionThread.endExecution(s);
         return;
     }

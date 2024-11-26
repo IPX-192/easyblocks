@@ -26,7 +26,6 @@ QList<Block::ParamType> GoToPositionBlock::getParamTypes() const
 //m的内存问题：应该对 m 进行删除以避免内存泄漏
 void GoToPositionBlock::executeNextStep(ExecutionThread& executionThread) const
 {
-    qDebug()<<"vvvvvvvvvvvvvvvvvvvvvvvvvvvvv";
     //check if block is valid for execution
     if(_xPos == NULL || _yPos == NULL)
         executionThread.endExecution(NULL);
@@ -87,7 +86,7 @@ void GoToPositionBlock::executeNextStep(ExecutionThread& executionThread) const
             int y = (int) v->toDouble();
             sprite->setPosition(QPoint(x, y));
 
-             qDebug()<<u8"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<设置位置2";
+            qDebug()<<u8"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<设置位置2";
         }
         executionThread.endExecution(NULL);
         return;

@@ -1,4 +1,4 @@
-#include "workspacewidget.h"
+﻿#include "workspacewidget.h"
 
 #include <QDebug>
 
@@ -92,7 +92,7 @@ void WorkspaceWidget::init()
 
 void WorkspaceWidget::spriteSelectionChanged(int index)
 {
-    qDebug()<<"<<<<<<<<<<<<<<<<<<<< spriteSelectionChanged " << index;
+    //qDebug()<<"<<<<<<<<<<<<<<<<<<<< spriteSelectionChanged " << index;
     if (index < 0) {
         _blockCanvasView->setScene(NULL);
         return;

@@ -87,15 +87,18 @@ void BlockReprLibraryWidget::setupView()
 //根据选中的类别,加载不同的块，并渲染在QGraphicsScene
 void BlockReprLibraryWidget::draw()
 {
-    qDebug()<<"<<<<<<<<<<<<<<<<<< draw";
+
     QList<BlockRepr*> blocks;
     if (_currentCat != "User Functions")
         blocks.append(_model->getProject()->getBlockReprLibrary()->getBlocksOfCategory(_currentCat));
     else {
         foreach (UserStatementBlockRepr* usbr, _model->getProject()->getUserStatementBlockReprs()) {
+
             blocks.append(usbr);
         }
     }
+    qDebug()<<u8"<<<<<<<<<<<<<<<<<< 画物块了 " <<blocks.size();
+
 
     if (_addBlockBtnProxy->scene() != NULL)
         _addBlockBtnProxy->scene()->removeItem(_addBlockBtnProxy);
@@ -103,12 +106,13 @@ void BlockReprLibraryWidget::draw()
 
     QPoint pos(10, 10);
     int i = 0;
+
     foreach (BlockRepr* br, blocks) {
         if (_currentCat != "User Functions" && !_model->getProject()->getBlockReprLibrary()->isVisible(br))
             continue;
-        BlockReprView* brv = BlockReprView::newBlockReprView(br);
+        BlockReprView* brv = BlockReprView::newBlockReprView(br);  //静态工厂方法，创建一个与当前blockrepr对象对应的BlockReprView对象
         brv->setPos(pos);
-        _scene->addItem(brv);
+        _scene->addItem(brv);   //开始循环绘制物块
 
         if (_currentCat == "User Functions") {
             EditUserStatementButton* btn = new EditUserStatementButton(i, tr("Edit"));
@@ -122,6 +126,8 @@ void BlockReprLibraryWidget::draw()
         pos += QPoint(0, br->getTotalSize().height() + 15);
         i++;
     }
+
+    //重要：在什么情况下需要使用QGraphicsScene？ 流程图，平面游戏，可视化界面等，好处在于  1.层次管理清晰（setZValue()函数）2、批量操作便捷 3、鼠标键盘事件传递灵活有效
 
     if (_currentCat == "User Functions")
     {

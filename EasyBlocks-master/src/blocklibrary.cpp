@@ -65,6 +65,8 @@ BlockLibrary::BlockLibrary()
     registerBlock(new NumberListSize());
     registerBlock(new MessageSignalReceivedBlock());
     registerBlock(new SendMessageSignalToSpriteBlock());
+
+    qDebug()<<u8"添加了多少个 "<<_blocks.size();
 }
 
 BlockLibrary::~BlockLibrary()
@@ -90,7 +92,6 @@ bool BlockLibrary::registerBlock(Block* block)
     //add block
     _blocks.append(block);
 
-    qDebug()<<u8"添加了多少个 "<<_blocks.size();
     return true;
 }
 
