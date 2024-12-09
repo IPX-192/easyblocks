@@ -107,6 +107,7 @@ UserStatement *ProjectCompiler::createUserStatement(UserStatementRepr *userState
     return userStatement;
 }
 
+
 void ProjectCompiler::compileSprite(SpriteRepr* spriteRepr, Sprite *sprite, QMap<SpriteRepr *, Sprite *> sprites, QMap<UserStatementRepr *, UserStatement *> userStatements, ProgramModel* model)
 {
     //Compile the blocks in the sprite
@@ -121,9 +122,15 @@ void ProjectCompiler::compileSprite(SpriteRepr* spriteRepr, Sprite *sprite, QMap
     foreach (VarBlockRepr* varBlockRepr, spriteRepr->getVars()) {
 
         if(isListVar(varBlockRepr))
+        {
             sprite->getVarTable()->addList(new SimpleValueList(varBlockRepr->getVarName(), getDataType(varBlockRepr)));
+        }
+
         else
+        {
             sprite->getVarTable()->addVariable(new SimpleVariable(varBlockRepr->getVarName(), getDataType(varBlockRepr)));
+        }
+
     }
 }
 
@@ -172,11 +179,12 @@ EventBlock *ProjectCompiler::compileEventBlock(BlockRepr* blockRepr, QMap<Sprite
         return NULL;
     }
 
-    //增加参数，好像没用的样子？
+    //给事件块增加参数，部分事件块并没有参数，暂时不考虑
     for(int i = 0; i < blockRepr->getNumParams(); i++) {
         block->addParameter(compileParam(blockRepr->getParam(i), sprites, userStatements), i);
     }
 
+    //重要:这里的关键是找到下一个物块，下一个物块是怎么确定的？？
     block->setStatement(compileBody(blockRepr->getNextStatement(), sprites, userStatements));
 
     return block;
@@ -234,6 +242,9 @@ Block* ProjectCompiler::compileParam(BlockRepr* blockRepr, QMap<SpriteRepr *, Sp
         return NULL;
     }
 
+    //重要：判断返回值类型,第一类是表达式类型的,例如求值运算、逻辑或者数值计算表达式
+    //第二类：代表变量类型的参数
+    //第三类是列表类型的参数
     if(Block::isExpressionParam(blockRepr->getReturnType()))
         return compileExpression(blockRepr, sprites, userStatements);
 

@@ -24,6 +24,7 @@ BlockReprHolder::~BlockReprHolder()
 //重要：这里是放物块的第一步，后面根据放进去的物块的id分别实例化
 void BlockReprHolder::addBlock(BlockRepr *block)
 {
+    qDebug()<<"sfasfasf11";
     if(block != NULL) {
         _blocks.append(block);
         block->setHolderParent(this);
@@ -33,6 +34,7 @@ void BlockReprHolder::addBlock(BlockRepr *block)
 
 bool BlockReprHolder::removeBlock(BlockRepr *block)
 {
+      qDebug()<<"sfasfasf22";
     for(int i = 0; i < _blocks.size(); i++) {
         if(_blocks[i] == block) {
             _blocks.removeAt(i);

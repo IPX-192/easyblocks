@@ -1,4 +1,4 @@
-#include "whileblock.h"
+﻿#include "whileblock.h"
 
 #include "../../executionthread.h"
 #include "../../intmessage.h"
@@ -45,6 +45,7 @@ void WhileBlock::executeNextStep(ExecutionThread& executionThread) const
     {
         Value* value = (Value*) executionThread.getReturnValue();
         //if no return value or false -> end execution
+        //重要：while循环只需要判断这个条件是否为真
         if(value == NULL || !value->toBool())
         {
             executionThread.endExecution(NULL);

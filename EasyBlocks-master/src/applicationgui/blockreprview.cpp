@@ -125,13 +125,17 @@ void BlockReprView::mouseMoveEvent(QGraphicsSceneMouseEvent* event)
 
     //remove block from scene if blockrepr is not locked
     if(!isLocked)
+    {
+        qDebug()<<"vsdsadasfsafafafa1 ";
         scene()->removeItem(this);
+    }
 
     //set drag pixmap
     setCursorPixmap(drag, event->pos().toPoint());
 
     //add (copy of) this block to the drag
     if(isLocked) {
+           qDebug()<<"vsdsadasfsafafafa2 ";
         mime->getDragInfo()->setBlockRepr(_blockRepr->copy());
         mime->getDragInfo()->getBlockRepr()->setLock(false);
     }
@@ -146,10 +150,19 @@ void BlockReprView::mouseMoveEvent(QGraphicsSceneMouseEvent* event)
 
     //check if drop was successful
     if(!mime->getDragInfo()->getDropSuccessful()) {
+
         if(isLocked)
+        {
+            //拖了没拖走
             delete mime->getDragInfo()->getBlockRepr();
+        }
+
         else
+        {
+            qDebug()<<"vsdsadasfsafafafa4 ";
             mime->getDragInfo()->getBlockRepr()->revert();
+        }
+
     }
 }
 

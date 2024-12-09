@@ -22,6 +22,7 @@ QList<Block::ParamType> GreaterThanNumberBlock::getParamTypes() const
     return params;
 }
 
+//两个数的大于比较
 void GreaterThanNumberBlock::executeNextStep(ExecutionThread& executionThread) const
 {
     if(_left == NULL || _right == NULL) {

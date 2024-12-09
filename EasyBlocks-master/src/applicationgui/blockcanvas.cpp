@@ -27,7 +27,7 @@ void BlockCanvas::spriteUpdated()
 
 void BlockCanvas::dragMoveEvent(QGraphicsSceneDragDropEvent* event)
 {
-    qDebug()<<u8"拖动画布";
+    //qDebug()<<u8"拖动画布";
     QGraphicsScene::dragMoveEvent(event);
     event->accept();
     event->setDropAction(Qt::MoveAction);

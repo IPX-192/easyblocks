@@ -11,6 +11,7 @@
 #include "sprite.h"
 #include "value.h"
 #include "iohandler.h"
+#include <QDebug>
 
 /**
  * @brief The ExecutionThread class

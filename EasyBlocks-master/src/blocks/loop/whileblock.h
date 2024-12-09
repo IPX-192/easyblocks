@@ -1,4 +1,4 @@
-#ifndef WHILEBLOCK_H
+﻿#ifndef WHILEBLOCK_H
 #define WHILEBLOCK_H
 
 #include "../../statementblock.h"
@@ -81,8 +81,8 @@ public:
     virtual Block* newInstance() const {return new WhileBlock();}
 
 private:
-    ExpressionBlock* _condition;
-    StatementBlock* _body;
+    ExpressionBlock* _condition;   //参数块
+    StatementBlock* _body;         //下一个执行块
 };
 
 #endif // WHILEBLOCK_H

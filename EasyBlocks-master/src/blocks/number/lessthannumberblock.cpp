@@ -22,6 +22,7 @@ QList<Block::ParamType> LessThanNumberBlock::getParamTypes() const
     return params;
 }
 
+//两个数的小于比较
 void LessThanNumberBlock::executeNextStep(ExecutionThread& executionThread) const
 {
     if(_left == NULL || _right == NULL) {

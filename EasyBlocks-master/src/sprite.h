@@ -37,6 +37,7 @@ public:
     /**
      * @brief Adds an event block to the list of event block of this sprite
      * @param block The block to add
+     * 说明：和物块管理器重中的添加不同，这个只加事件块
      */
     void addBlock(EventBlock* block) { _blocks.append(block); }
 
