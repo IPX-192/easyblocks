@@ -309,6 +309,7 @@ bool BlockRepr::placeParam(BlockRepr* repr, int index)
     return true;
 }
 
+//重要，设置下一个物块的方法在这里
 bool BlockRepr::placeNextStatement(BlockRepr* repr)
 {
     if(repr == NULL)
@@ -317,6 +318,7 @@ bool BlockRepr::placeNextStatement(BlockRepr* repr)
     if (!doesBodyFit(repr, -1))
         return false;
 
+    //这里是读取xml文件中设置下一个物块的方法
     _nextBlock = repr;
     repr->setParent(this);
 

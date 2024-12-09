@@ -1,4 +1,4 @@
-#include "blockreprviewholder.h"
+﻿#include "blockreprviewholder.h"
 
 #include <QPainter>
 #include <QGraphicsSceneDragDropEvent>
@@ -82,6 +82,9 @@ void BlockReprViewHolder::dropEvent(QGraphicsSceneDragDropEvent* event)
             return;
 
         //if drop successful
+
+        //物块贴合触发
+        qDebug()<<u8"物块贴合触发";
         if(dropBlock(mime->getDragInfo()->getBlockRepr()))
         {
             mime->getDragInfo()->setDropSuccessful(true);

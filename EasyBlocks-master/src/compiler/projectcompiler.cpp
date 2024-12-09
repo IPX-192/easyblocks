@@ -184,7 +184,7 @@ EventBlock *ProjectCompiler::compileEventBlock(BlockRepr* blockRepr, QMap<Sprite
         block->addParameter(compileParam(blockRepr->getParam(i), sprites, userStatements), i);
     }
 
-    //重要:这里的关键是找到下一个物块，下一个物块是怎么确定的？？
+    //重要:这里的关键是找到下一个物块，下一个物块是通过拖拽的时候确定的
     block->setStatement(compileBody(blockRepr->getNextStatement(), sprites, userStatements));
 
     return block;

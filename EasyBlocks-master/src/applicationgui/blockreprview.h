@@ -13,6 +13,8 @@
  * @brief The BlockReprView class
  *
  * @author Brecht Vandevoort
+ *
+ * 说明：这个类是绘制物块形状的一个重要的类
  */
 class BlockReprView : public QObject, public QGraphicsItem
 {

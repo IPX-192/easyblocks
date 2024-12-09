@@ -1,4 +1,4 @@
-#ifndef BLOCKREPRVIEWHOLDER_H
+﻿#ifndef BLOCKREPRVIEWHOLDER_H
 #define BLOCKREPRVIEWHOLDER_H
 
 #include <QGraphicsItem>
