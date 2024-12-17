@@ -114,7 +114,12 @@ void ProjectCompiler::compileSprite(SpriteRepr* spriteRepr, Sprite *sprite, QMap
     foreach (BlockRepr* blockRepr, spriteRepr->getBlocks()) {
         //ignore non-event blocks
         if(blockRepr->getReturnType() == Block::EVENT) {
+            qDebug()<<u8"有命令块";
             sprite->addBlock(compileEventBlock(blockRepr, sprites, userStatements));
+        }
+        else
+        {
+            qDebug()<<u8"没有命令块";
         }
     }
 
@@ -190,18 +195,22 @@ EventBlock *ProjectCompiler::compileEventBlock(BlockRepr* blockRepr, QMap<Sprite
     return block;
 }
 
+//编译一个个语句块
 StatementBlock* ProjectCompiler::compileBody(BlockRepr* blockRepr, QMap<SpriteRepr *, Sprite *> sprites, QMap<UserStatementRepr *, UserStatement *> userStatements)
 {
     StatementsBlock* statements = new StatementsBlock();
 
+    int i = 0;
     if(blockRepr == NULL)
         return statements;
 
     do {
         statements->addStatement(compileStatement(blockRepr, sprites, userStatements));
         blockRepr = blockRepr->getNextStatement();
+        i ++ ;
     } while(blockRepr != NULL);
 
+    qDebug() << u8"一共多少语句块" << i;
     return statements;
 }
 
@@ -224,6 +233,7 @@ StatementBlock* ProjectCompiler::compileStatement(BlockRepr* blockRepr, QMap<Spr
         }
     }
 
+    //给具体的块增加参数，比如小于判断的左右两边框子的值,如果是while也是条件的值就是参数
     for(int i = 0; i < blockRepr->getNumParams(); i++) {
         statement->addParameter(compileParam(blockRepr->getParam(i), sprites, userStatements), i);
     }
@@ -249,7 +259,10 @@ Block* ProjectCompiler::compileParam(BlockRepr* blockRepr, QMap<SpriteRepr *, Sp
         return compileExpression(blockRepr, sprites, userStatements);
 
     if(Block::isVariableParam(blockRepr->getReturnType()))
+    {
+        qDebug()<<u8"<<<<<<编译变量1";
         return compileVarBlock(blockRepr);
+    }
 
     if(Block::isListParam(blockRepr->getReturnType()))
         return compileListBlock(blockRepr);
@@ -279,6 +292,8 @@ ExpressionBlock* ProjectCompiler::compileExpression(BlockRepr* blockRepr, QMap<S
 
 ExpressionBlock* ProjectCompiler::compileSpecialCaseExpression(BlockRepr* blockRepr)
 {
+
+    qDebug()<<u8"<<<<<<<<<<<     compileSpecialCaseExpression";
     if(blockRepr == NULL)
         return NULL;
 
@@ -300,7 +315,11 @@ ExpressionBlock* ProjectCompiler::compileSpecialCaseExpression(BlockRepr* blockR
 
     //if variable:
     if(blockRepr->isVarBlockRepr())
+    {
+        qDebug()<<u8"<<<<<<编译变量2";
         return compileVarBlock(blockRepr);
+    }
+
 
     //if everything fails:
     setFailed(QObject::tr("The following block was not found: ") + blockRepr->getId());

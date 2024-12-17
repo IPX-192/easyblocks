@@ -41,6 +41,7 @@ bool BlockReprLibrary::registerBlock(BlockRepr *blockRepr)
     return true;
 }
 
+//重要,xml来获取的暂时不管
 BlockRepr* BlockReprLibrary::getBlockReprInstance(QString id) const
 {
     BlockRepr* blockRepr = get(id);

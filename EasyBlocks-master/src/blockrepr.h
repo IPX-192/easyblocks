@@ -382,9 +382,9 @@ private:
     BlockReprHolder* _holderParent;
     Block::ParamType _returnType;
     QStringList _paramLabels;
-    QList<ParamRepr*> _params;
+    QList<ParamRepr*> _params;   //一个单独的块里面的参数
     QStringList _bodyLabels;
-    QList<BlockRepr*> _bodies;
+    QList<BlockRepr*> _bodies;   //一个块里面的语句是一个单独的块
     QPoint _position;
     BlockRepr* _nextBlock;
     bool _lastRemovedWasParam;
